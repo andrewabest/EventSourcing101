@@ -1,0 +1,11 @@
+﻿Entity approvals.
+
+Read models (People named Fred).
+
+Participants in UOW.
+
+Review.
+
+Readme.md
+
+Push.

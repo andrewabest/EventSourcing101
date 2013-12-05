@@ -51,8 +51,13 @@
     <Compile Include="Domain\AggregateRoot.cs" />
     <Compile Include="Domain\AggregateRootExtensions.cs" />
     <Compile Include="Domain\AggregateRootIdEqualityComparer.cs" />
+    <Compile Include="Domain\Aggregates\CustomerAggregate\Appointment.cs" />
     <Compile Include="Domain\Aggregates\CustomerAggregate\Customer.cs" />
+    <Compile Include="Domain\Aggregates\CustomerAggregate\Facts\AppointmentCreatedFact.cs" />
+    <Compile Include="Domain\Aggregates\CustomerAggregate\Facts\AppointmentRescheduledFact.cs" />
     <Compile Include="Domain\Aggregates\CustomerAggregate\Facts\CustomerCreatedFact.cs" />
+    <Compile Include="Domain\Aggregates\CustomerAggregate\Facts\FactAboutAppointment.cs" />
+    <Compile Include="Domain\Entity.cs" />
     <Compile Include="Domain\Fact.cs" />
     <Compile Include="Domain\IAppendFacts.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
@@ -78,6 +83,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="todo.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
