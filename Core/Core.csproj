@@ -56,9 +56,11 @@
     <Compile Include="Domain\Aggregates\CustomerAggregate\Facts\AppointmentCreatedFact.cs" />
     <Compile Include="Domain\Aggregates\CustomerAggregate\Facts\AppointmentRescheduledFact.cs" />
     <Compile Include="Domain\Aggregates\CustomerAggregate\Facts\CustomerCreatedFact.cs" />
+    <Compile Include="Domain\Aggregates\CustomerAggregate\Facts\CustomerNameChangedFact.cs" />
     <Compile Include="Domain\Aggregates\CustomerAggregate\Facts\FactAboutAppointment.cs" />
     <Compile Include="Domain\Entity.cs" />
     <Compile Include="Domain\Fact.cs" />
+    <Compile Include="Domain\Handlers\NameChangeHandler.cs" />
     <Compile Include="Domain\IAppendFacts.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Extensions\IdentityExtensions.cs" />
@@ -87,6 +89,7 @@
   <ItemGroup>
     <Content Include="todo.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

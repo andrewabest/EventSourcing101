@@ -55,6 +55,7 @@
     <Compile Include="Approvals\Facts\AllFacts.cs" />
     <Compile Include="IntegrationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WhenCreatingACustomerWhosNameIsNotAndrew.cs" />
     <Compile Include="WhenCreatingACustomer.cs" />
     <Compile Include="WhenCreatingAnAppointment.cs" />
   </ItemGroup>

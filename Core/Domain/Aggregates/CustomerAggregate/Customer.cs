@@ -20,7 +20,7 @@ namespace Core.Domain.Aggregates.CustomerAggregate
 
         public static Customer Create(string name)
         {
-            var fact = new CustomerCreatedFact() {Name = name};
+            var fact = new CustomerCreatedFact() {Name = name, AggregateRootId = Guid.NewGuid()};
 
             var customer = new Customer();
             customer.Append(fact);
@@ -33,11 +33,26 @@ namespace Core.Domain.Aggregates.CustomerAggregate
 
         public IEnumerable<Appointment> Appointments { get { return _appointments; } }
 
+        public void ChangeName(string name)
+        {
+            if (Name == name) return;
+
+            var fact = new CustomerNameChangedFact() {Name = name};
+
+            Append(fact);
+            Apply(fact);
+        }
+
         public Appointment ScheduleAppointment(DateTimeOffset dateOfAppointment)
         {
             var appointment = Appointment.Create(dateOfAppointment, this);
             _appointments.Add(appointment);
             return appointment;
+        }
+
+        public void Apply(CustomerNameChangedFact fact)
+        {
+            Name = fact.Name;
         }
 
         public void Apply(AppointmentCreatedFact fact)
@@ -54,6 +69,7 @@ namespace Core.Domain.Aggregates.CustomerAggregate
 
         public void Apply(CustomerCreatedFact fact)
         {
+            Id = fact.AggregateRootId;
             Name = fact.Name;
         }
     }

@@ -13,7 +13,7 @@ namespace Core.Domain.Aggregates.CustomerAggregate
 
         internal static Appointment Create(DateTimeOffset dateOfAppointment, IAppendFacts parent)
         {
-            var fact = new AppointmentCreatedFact() {DateOfAppointment = dateOfAppointment};
+            var fact = new AppointmentCreatedFact() {Id = Guid.NewGuid(), DateOfAppointment = dateOfAppointment};
 
             var appointment = new Appointment(parent);
             appointment.Append(fact);
@@ -46,6 +46,7 @@ namespace Core.Domain.Aggregates.CustomerAggregate
 
         public void Apply(AppointmentCreatedFact fact)
         {
+            Id = fact.Id;
             DateOfAppointment = fact.DateOfAppointment;
         }
     }
