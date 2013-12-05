@@ -10,11 +10,6 @@ namespace Core.AutofacModules
                 .Where(t => t.IsClosedTypeOf(typeof(IHandleDuringUnitOfWork<>)))
                 .AsImplementedInterfaces()
                 .InstancePerLifetimeScope();
-
-            builder.RegisterAssemblyTypes(typeof(Repository<>).Assembly)
-                .Where(t => t.IsClosedTypeOf(typeof(IHandle<>)))
-                .AsImplementedInterfaces()
-                .InstancePerLifetimeScope();
         }
     }
 }

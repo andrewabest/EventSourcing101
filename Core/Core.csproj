@@ -47,6 +47,7 @@
     <Compile Include="AutofacModules\HandlerModule.cs" />
     <Compile Include="AutofacModules\IoC.cs" />
     <Compile Include="AutofacModules\PersistenceModule.cs" />
+    <Compile Include="AutofacModules\ReadModelModule.cs" />
     <Compile Include="AutofacModules\UtilityModule.cs" />
     <Compile Include="Domain\AggregateRoot.cs" />
     <Compile Include="Domain\AggregateRootExtensions.cs" />
@@ -62,8 +63,10 @@
     <Compile Include="Domain\Fact.cs" />
     <Compile Include="Domain\Handlers\NameChangeHandler.cs" />
     <Compile Include="Domain\IAppendFacts.cs" />
+    <Compile Include="Domain\ReadModels\CustomersNamedAndrewReadModel.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Extensions\IdentityExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="IAggregateBuilder.cs" />
     <Compile Include="IQuery.cs" />
     <Compile Include="IQueryableSnapshot.cs" />

@@ -3,7 +3,7 @@
 namespace Core.Domain.Aggregates.CustomerAggregate.Facts
 {
     [Serializable]
-    public class FactAboutAppointment : Fact<Customer>
+    public abstract class FactAboutAppointment : Fact<Customer>
     {
     }
 }

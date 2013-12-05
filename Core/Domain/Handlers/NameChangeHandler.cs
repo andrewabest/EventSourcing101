@@ -1,6 +1,7 @@
 ﻿using System;
 using Core.Domain.Aggregates.CustomerAggregate;
 using Core.Domain.Aggregates.CustomerAggregate.Facts;
+using Core.Extensions;
 
 namespace Core.Domain.Handlers
 {
@@ -23,14 +24,6 @@ namespace Core.Domain.Handlers
 
                 customer.ChangeName("Andrew");
             }
-        }
-    }
-
-    public static class StringExtensions
-    {
-        public static bool IsNotAndrew(this string value)
-        {
-            return value.Equals("Andrew", StringComparison.InvariantCultureIgnoreCase) == false;
         }
     }
 }

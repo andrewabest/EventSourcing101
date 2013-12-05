@@ -58,6 +58,7 @@
     <Compile Include="WhenCreatingACustomerWhosNameIsNotAndrew.cs" />
     <Compile Include="WhenCreatingACustomer.cs" />
     <Compile Include="WhenCreatingAnAppointment.cs" />
+    <Compile Include="WhenTheNameAndrewIsUsed.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
