@@ -44,8 +44,17 @@
   <ItemGroup>
     <Compile Include="AggregateBuilder.cs" />
     <Compile Include="AutofacModules\CoreModule.cs" />
+    <Compile Include="AutofacModules\HandlerModule.cs" />
+    <Compile Include="AutofacModules\IoC.cs" />
+    <Compile Include="AutofacModules\PersistenceModule.cs" />
+    <Compile Include="AutofacModules\UtilityModule.cs" />
+    <Compile Include="Domain\AggregateRoot.cs" />
     <Compile Include="Domain\AggregateRootExtensions.cs" />
     <Compile Include="Domain\AggregateRootIdEqualityComparer.cs" />
+    <Compile Include="Domain\Aggregates\CustomerAggregate\Customer.cs" />
+    <Compile Include="Domain\Aggregates\CustomerAggregate\Facts\CustomerCreatedFact.cs" />
+    <Compile Include="Domain\Fact.cs" />
+    <Compile Include="Domain\IAppendFacts.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Extensions\IdentityExtensions.cs" />
     <Compile Include="IAggregateBuilder.cs" />

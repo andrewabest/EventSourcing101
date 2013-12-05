@@ -1,4 +1,6 @@
-﻿using Autofac;
+﻿using System.Security.Principal;
+using System.Threading;
+using Autofac;
 using Core.Domain;
 
 namespace Core.AutofacModules
@@ -21,9 +23,10 @@ namespace Core.AutofacModules
                    .InstancePerLifetimeScope();
 
             builder.RegisterType<QueryableSnapshot>()
-                   .AsImplementedInterfaces()
-                   .As<IHandle<IFact>>()
-                   .SingleInstance();
+                .AsImplementedInterfaces()
+                .As<IHandle<IFact>>()
+                .SingleInstance()
+                .AutoActivate();
 
             builder.RegisterType<AggregateBuilder>()
                    .AsImplementedInterfaces()
@@ -32,32 +35,10 @@ namespace Core.AutofacModules
             builder.RegisterType<DomainEventBroker>()
                    .AsImplementedInterfaces()
                    .SingleInstance();
-        }
-    }
 
-    public class HandlerModule : Module
-    {
-        protected override void Load(ContainerBuilder builder)
-        {
-            builder.RegisterAssemblyTypes(typeof(Repository<>).Assembly)
-                   .Where(t => t.IsClosedTypeOf(typeof(IHandleDuringUnitOfWork<>)))
-                   .AsImplementedInterfaces()
-                   .InstancePerLifetimeScope();
-
-            builder.RegisterAssemblyTypes(typeof(Repository<>).Assembly)
-                   .Where(t => t.IsClosedTypeOf(typeof(IHandle<>)))
-                   .AsImplementedInterfaces()
-                   .InstancePerLifetimeScope();
-        }
-    }
-
-    public class UtilityModule : Module
-    {
-        protected override void Load(ContainerBuilder builder)
-        {
-            builder.RegisterType<SystemClock>()
-                   .AsImplementedInterfaces()
-                   .SingleInstance();
+            builder.Register(c => Thread.CurrentPrincipal.Identity)
+                   .As<IIdentity>()
+                   .InstancePerDependency();
         }
     }
 }

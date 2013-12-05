@@ -25,6 +25,7 @@ namespace Core
             IDomainEventBroker domainEventBroker)
         {
             //_factStore = factStore;
+
             _clock = clock;
             _identity = identity;
             _domainEventBroker = domainEventBroker;
@@ -51,6 +52,8 @@ namespace Core
 
             var allFactsForThisUnitOfWork = GetAllFactsForThisUnitOfWork();
             SetAllFactDetails(allFactsForThisUnitOfWork);
+            DispatchAllFacts(allFactsForThisUnitOfWork);
+
             //CommitAllFacts(allFactsForThisUnitOfWork);
         }
 
@@ -70,7 +73,7 @@ namespace Core
 
                 foreach (var fact in factsFromThisPass)
                 {
-                    _domainEventBroker.Raise(fact, this);
+                    _domainEventBroker.RaiseWithinUnitOfWork(fact, this);
                 }
             }
 
@@ -89,9 +92,14 @@ namespace Core
             }
         }
 
+        private void DispatchAllFacts(List<IFact> allFactsForThisUnitOfWork)
+        {
+            allFactsForThisUnitOfWork.ForEach(f => _domainEventBroker.Raise(f));
+        }
+
         private void CommitAllFacts(IEnumerable<IFact> allFactsForThisUnitOfWork)
         {
-            throw new NotImplementedException("Add NEventStore and uncomment this");
+            throw new NotImplementedException("Add NEventStore and uncomment this, and remove DispatchAllFacts as NEventStore handles dispatch after it commits.");
 
             //var groupedFacts = allFactsForThisUnitOfWork.GroupBy(f => f.AggregateRootId);
 
